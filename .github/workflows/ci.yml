@@ -33,5 +33,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run packaging tests
+      - name: Run packaging, link, anchor, and hygiene tests
         run: python -m unittest discover -s tests -v
+
+      - name: Verify generated README art is reproducible and up to date
+        run: python tools/generate_art.py --check
+
+      - name: Verify deterministic slim plugin release ZIP
+        run: python tools/build_release_zip.py --check-temp

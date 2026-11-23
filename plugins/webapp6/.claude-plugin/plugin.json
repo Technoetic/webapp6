@@ -1,6 +1,6 @@
 {
   "name": "webapp6",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "Six web-app principles for building, changing, and reviewing web apps (responsibility modules, layered CSS, screen/service boundaries, async loading, navigable URLs, safe deployment updates for already-open tabs) plus optional count-up and scroll-animation rules.",
   "author": {

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="28" viewBox="0 0 116 28" role="img" aria-labelledby="title">
+  <title id="title">LICENSE · MIT</title>
+  <rect width="73" height="28" fill="#23273a"/>
+  <rect x="73" width="43" height="28" fill="#C8FF00"/>
+  <g font-family="Verdana, DejaVu Sans, Malgun Gothic, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing=".7">
+    <text x="36.5" y="18" fill="#ffffff" textLength="53" lengthAdjust="spacingAndGlyphs">LICENSE</text>
+    <text x="94.5" y="18" fill="#000000" textLength="23" lengthAdjust="spacingAndGlyphs">MIT</text>
+  </g>
+</svg>

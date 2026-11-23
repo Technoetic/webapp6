@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">Rule 6 sequence diagram: already-open tab meets a new deployment</title>
+  <desc id="desc">An open tab running build A checks a fresh same-origin version endpoint after build B deploys. Clean navigation automatically loads the target URL as a full document; dirty edits or saves in flight are protected; network failures keep build A usable.</desc>
+  <defs>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#00F5D4"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#CBD5E1"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#FF9E00"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" rx="12" fill="#0B0F1A" stroke="#2A3550" stroke-width="2"/>
+  <text x="32" y="40" fill="#F8FAFC" font-family="Segoe UI, Verdana, sans-serif" font-size="20" font-weight="700">Rule 6: Already-Open Tab Meets a New Deployment</text>
+  <rect x="32" y="48" width="240" height="3" fill="#00F5D4"/>
+  <text x="928" y="40" text-anchor="end" fill="#64748B" font-family="Consolas, monospace" font-size="12">webapp6 v0.2.0</text>
+
+  <!-- Lifelines -->
+  <g font-family="Segoe UI, Verdana, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+    <rect x="70" y="70" width="140" height="34" rx="6" fill="#1E1650" stroke="#7B61FF" stroke-width="2"/>
+    <text x="140" y="92" fill="#EDE9FE">User</text>
+    <rect x="370" y="70" width="220" height="34" rx="6" fill="#062F33" stroke="#00F5D4" stroke-width="2"/>
+    <text x="480" y="92" fill="#CCFBF1">Open Tab (loadedBuild = A)</text>
+    <rect x="750" y="70" width="140" height="34" rx="6" fill="#1E293B" stroke="#94A3B8" stroke-width="2"/>
+    <text x="820" y="92" fill="#F8FAFC">Origin Server</text>
+  </g>
+  <g stroke="#334155" stroke-width="1.5" stroke-dasharray="5 5">
+    <line x1="140" y1="104" x2="140" y2="452"/>
+    <line x1="480" y1="104" x2="480" y2="452"/>
+    <line x1="820" y1="104" x2="820" y2="452"/>
+  </g>
+
+  <!-- Step 1: Initial load -->
+  <line x1="820" y1="132" x2="488" y2="132" stroke="#CBD5E1" stroke-width="1.8" marker-end="url(#arr-slate)"/>
+  <text x="654" y="125" text-anchor="middle" fill="#E2E8F0" font-family="Segoe UI, Verdana, sans-serif" font-size="12">Build A HTML (embedded build ID = A; never from startup fetch)</text>
+
+  <!-- Deploy banner -->
+  <line x1="60" y1="164" x2="900" y2="164" stroke="#475569" stroke-width="1.5"/>
+  <rect x="240" y="150" width="480" height="26" rx="13" fill="#1E293B" stroke="#7B61FF" stroke-width="1.5"/>
+  <text x="480" y="167" text-anchor="middle" fill="#F8FAFC" font-family="Segoe UI, Verdana, sans-serif" font-size="12" font-weight="700">Build B deployed (any serverBuild != A counts, including rollback)</text>
+
+  <!-- Trigger & check -->
+  <line x1="140" y1="204" x2="472" y2="204" stroke="#CBD5E1" stroke-width="1.8" marker-end="url(#arr-slate)"/>
+  <text x="308" y="197" text-anchor="middle" fill="#E2E8F0" font-family="Segoe UI, Verdana, sans-serif" font-size="12">Navigation, tab return, or BFCache restore</text>
+  <line x1="480" y1="204" x2="812" y2="204" stroke="#CBD5E1" stroke-width="1.8" marker-end="url(#arr-slate)"/>
+  <text x="650" y="197" text-anchor="middle" fill="#E2E8F0" font-family="Segoe UI, Verdana, sans-serif" font-size="12">Fresh same-origin version request (no-store)</text>
+
+  <!-- Branch 1: Clean -->
+  <rect x="52" y="226" width="856" height="92" rx="8" fill="#071E24" stroke="#00F5D4" stroke-width="1.5"/>
+  <rect x="52" y="226" width="304" height="22" rx="4" fill="#00F5D4"/>
+  <text x="64" y="241" fill="#0B0F1A" font-family="Segoe UI, Verdana, sans-serif" font-size="11" font-weight="700">ALT 1 · IDs differ &amp; next navigation is clean</text>
+  <text x="295" y="272" text-anchor="middle" fill="#99F6E4" font-family="Segoe UI, Verdana, sans-serif" font-size="11.5">Recheck !dirty &amp;&amp; !saving right before leaving</text>
+  <line x1="480" y1="274" x2="812" y2="274" stroke="#00F5D4" stroke-width="2" marker-end="url(#arr-cyan)"/>
+  <text x="650" y="267" text-anchor="middle" fill="#00F5D4" font-family="Segoe UI, Verdana, sans-serif" font-size="12" font-weight="700">Full-document load of target URL (no accept prompt)</text>
+  <line x1="820" y1="302" x2="488" y2="302" stroke="#00F5D4" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr-cyan)"/>
+  <text x="654" y="296" text-anchor="middle" fill="#CCFBF1" font-family="Segoe UI, Verdana, sans-serif" font-size="12">Build B HTML + matching hashed assets run</text>
+
+  <!-- Branch 2: Dirty or saving -->
+  <rect x="52" y="330" width="856" height="58" rx="8" fill="#2A1708" stroke="#FF9E00" stroke-width="1.5"/>
+  <rect x="52" y="330" width="304" height="22" rx="4" fill="#FF9E00"/>
+  <text x="64" y="345" fill="#0B0F1A" font-family="Segoe UI, Verdana, sans-serif" font-size="11" font-weight="700">ALT 2 · Dirty input or save in flight</text>
+  <line x1="480" y1="372" x2="148" y2="372" stroke="#FF9E00" stroke-width="2" marker-end="url(#arr-amber)"/>
+  <text x="314" y="366" text-anchor="middle" fill="#FEF3C7" font-family="Segoe UI, Verdana, sans-serif" font-size="12" font-weight="700">Notify &amp; protect draft until saved, cancelled, or discarded</text>
+  <text x="654" y="372" text-anchor="middle" fill="#FDBA74" font-family="Segoe UI, Verdana, sans-serif" font-size="12">Never force a background reload</text>
+
+  <!-- Branch 3: Failure -->
+  <rect x="52" y="400" width="856" height="50" rx="8" fill="#151C2C" stroke="#475569" stroke-width="1.5"/>
+  <rect x="52" y="400" width="304" height="22" rx="4" fill="#475569"/>
+  <text x="64" y="415" fill="#F8FAFC" font-family="Segoe UI, Verdana, sans-serif" font-size="11" font-weight="700">ALT 3 · Version request fails / times out</text>
+  <text x="480" y="438" text-anchor="middle" fill="#CBD5E1" font-family="Segoe UI, Verdana, sans-serif" font-size="12">Keep Build A and drafts usable; retry on a later trigger (no reload loop)</text>
+</svg>

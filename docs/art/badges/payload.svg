@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="207" height="28" viewBox="0 0 207 28" role="img" aria-labelledby="title">
+  <title id="title">PLUGIN: 10 files · 37 KiB</title>
+  <clipPath id="r"><rect width="207" height="28" rx="4" fill="#fff"/></clipPath>
+  <g clip-path="url(#r)">
+    <rect width="63" height="28" fill="#1E2436"/>
+    <rect x="63" width="144" height="28" fill="#00F5D4"/>
+  </g>
+  <g font-family="Verdana, DejaVu Sans, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing=".5">
+    <text x="31.5" y="18" fill="#FFFFFF" textLength="45" lengthAdjust="spacingAndGlyphs">PLUGIN</text>
+    <text x="135" y="18" fill="#0B0F1A" textLength="126" lengthAdjust="spacingAndGlyphs">10 files · 37 KiB</text>
+  </g>
+</svg>

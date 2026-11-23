@@ -1,0 +1,4 @@
+interface:
+  display_name: "webapp6 · Six Web-App Principles"
+  short_description: "웹앱 생성·수정·검토에 6원칙(모듈·CSS 계층·책임 경계·비동기·화면 URL·배포 갱신)과 선택 항목(카운트업·스크롤 애니메이션)을 적용한다."
+  default_prompt: "$webapp6:webapp6 이 웹앱에 6원칙을 적용해 검토하고, 실제로 검증한 항목과 미검증 항목을 나눠 보고해 줘."

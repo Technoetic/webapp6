@@ -1,0 +1,20 @@
+{
+  "name": "technoetic-webapp6",
+  "interface": {
+    "displayName": "Technoetic webapp6"
+  },
+  "plugins": [
+    {
+      "name": "webapp6",
+      "source": {
+        "source": "local",
+        "path": "./plugins/webapp6"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
